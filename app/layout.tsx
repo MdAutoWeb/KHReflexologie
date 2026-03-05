@@ -22,6 +22,9 @@ export const metadata: Metadata = {
     "Een ruimte waar iedereen welkom is, waar niets moet en je jezelf mag zijn. Voetreflexologie en relaxerende massages in Wevelgem.",
   keywords:
     "reflexologie, voetreflexologie, massage, Wevelgem, ontspanning, wellness",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
