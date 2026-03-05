@@ -11,7 +11,8 @@ export default function CTA() {
           alt=""
           fill
           className="object-cover opacity-20"
-          quality={90}
+          quality={80}
+          sizes="100vw"
         />
       </div>
       

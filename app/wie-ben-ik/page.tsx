@@ -78,6 +78,7 @@ export default function WieBenIk() {
                     alt="Kimberley aan het werk"
                     fill
                     className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 600px"
                   />
                 </div>
               </div>
@@ -93,6 +94,7 @@ export default function WieBenIk() {
                     alt="Voetreflexologie"
                     fill
                     className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 600px"
                   />
                 </div>
               </div>

@@ -51,15 +51,14 @@ export default function Header() {
             href="/" 
             className="flex items-center text-white"
           >
-            <div className="relative w-48 h-48 md:w-56 md:h-56 flex-shrink-0">
-              <Image
-                src="/images/Logo.png"
-                alt="Reflexologie Logo"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
+            <Image
+              src="/images/Logo.png"
+              alt="Reflexologie Logo"
+              width={220}
+              height={70}
+              priority
+              className="h-auto w-auto"
+            />
           </Link>
           
           <button

@@ -2,8 +2,9 @@ import Hero from './components/Hero';
 import CTA from './components/CTA';
 
 export const metadata = {
-  title: 'Home | Kimberley - Reflexologie & More',
-  description: 'Een ruimte waar iedereen welkom is, waar niets moet en je jezelf mag zijn. Voetreflexologie en relaxerende massages in Wevelgem.',
+  title: 'Voetreflexologie & voetmassage in en rond Brugge | KH Reflexologie',
+  description:
+    'Voetreflexologie en zachte voetmassage in een warme praktijk in de regio Brugge. Een ruimte waar iedereen welkom is, waar niets moet en je jezelf mag zijn.',
 };
 
 export default function Home() {

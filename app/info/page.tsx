@@ -3,8 +3,9 @@ import CTA from '../components/CTA';
 import Image from 'next/image';
 
 export const metadata = {
-  title: 'Info | Kimberley - Reflexologie & More',
-  description: 'Wat is reflexologie? Informatie over voetreflexologie, eerste bezoek, betaling en reserveringen.',
+  title: 'Info | Wat is voetreflexologie en voetmassage in Brugge',
+  description:
+    'Alles over wat voetreflexologie is, hoe een eerste bezoek verloopt en praktische info rond betaling en reserveren bij KH Reflexologie in de regio Brugge.',
 };
 
 export default function Info() {
@@ -46,6 +47,7 @@ export default function Info() {
                   alt="Eerste bezoek"
                   fill
                   className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 600px"
                 />
               </div>
             </div>
@@ -65,6 +67,7 @@ export default function Info() {
                   alt="Behandeling"
                   fill
                   className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 600px"
                 />
               </div>
 

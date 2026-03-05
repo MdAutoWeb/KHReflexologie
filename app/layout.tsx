@@ -17,11 +17,11 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Kimberley - Reflexologie & More | Welkom in een ruimte waar je jezelf mag zijn",
+  title: "Kimberley – Voetreflexologie & Voetmassage in en rond Brugge | KH Reflexologie",
   description:
-    "Een ruimte waar iedereen welkom is, waar niets moet en je jezelf mag zijn. Voetreflexologie en relaxerende massages in Wevelgem.",
+    "KH Reflexologie van Kimberley biedt voetreflexologie en zachte voetmassage in en rond Brugge. Een warme praktijk waar iedereen welkom is, waar niets moet en je jezelf mag zijn.",
   keywords:
-    "reflexologie, voetreflexologie, massage, Wevelgem, ontspanning, wellness",
+    "reflexologie, voetreflexologie, voetmassage, Brugge, regio Brugge, Wevelgem, ontspanning, wellness, KH Reflexologie",
   icons: {
     icon: "/favicon.ico",
   },

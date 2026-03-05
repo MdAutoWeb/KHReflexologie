@@ -23,7 +23,8 @@ export default function Hero({ title, subtitle, imageUrl, children, showTestimon
               fill
               className="object-cover"
               priority
-              quality={90}
+              quality={80}
+              sizes="100vw"
             />
           ) : (
             <div className="w-full h-full bg-gradient-to-br from-[#3F342C] to-[#2a231c]" />
@@ -56,7 +57,8 @@ export default function Hero({ title, subtitle, imageUrl, children, showTestimon
             fill
             className="object-cover"
             priority
-            quality={90}
+            quality={80}
+            sizes="100vw"
             style={{ objectPosition: 'center' }}
           />
         ) : (

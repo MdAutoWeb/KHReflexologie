@@ -3,8 +3,9 @@ import CTA from '../components/CTA';
 import Image from 'next/image';
 
 export const metadata = {
-  title: 'Aanbod | Kimberley - Reflexologie & More',
-  description: 'Ontdek onze behandelingen: voetreflexologie, combi voetreflexologie-verzorging en relaxerende lichaamsmassage. Prijzen en informatie.',
+  title: 'Aanbod | Voetreflexologie & voetmassage in regio Brugge',
+  description:
+    'Ontdek het aanbod van KH Reflexologie: voetreflexologie, combi voetreflexologie-verzorging en cadeaubonnen. Voetmassage en reflexologie in en rond Brugge.',
 };
 
 export default function Aanbod() {
@@ -57,6 +58,7 @@ export default function Aanbod() {
                     alt="Behandeling"
                     fill
                     className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 600px"
                   />
                 </div>
               </div>
@@ -77,6 +79,7 @@ export default function Aanbod() {
                   alt="Aromen producten"
                   fill
                   className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 600px"
                 />
               </div>
             </div>
