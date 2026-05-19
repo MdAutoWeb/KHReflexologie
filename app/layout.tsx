@@ -19,7 +19,7 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Kimberley – Voetreflexologie & Voetmassage in en rond Brugge | KH Reflexologie",
   description:
-    "KH Reflexologie van Kimberley biedt voetreflexologie en zachte voetmassage in en rond Brugge. Een warme praktijk waar iedereen welkom is, waar niets moet en je jezelf mag zijn.",
+    "Landen bij jezelf, te beginnen bij je voeten. KH Reflexologie van Kimberley biedt voetreflexologie in een warme praktijk in en rond Brugge.",
   keywords:
     "reflexologie, voetreflexologie, voetmassage, Brugge, regio Brugge, Wevelgem, ontspanning, wellness, KH Reflexologie",
   icons: {

@@ -1,23 +1,28 @@
 import Hero from './components/Hero';
 import CTA from './components/CTA';
+import QuoteBanner from './components/QuoteBanner';
 
 export const metadata = {
   title: 'Voetreflexologie & voetmassage in en rond Brugge | KH Reflexologie',
   description:
-    'Voetreflexologie en zachte voetmassage in een warme praktijk in de regio Brugge. Een ruimte waar iedereen welkom is, waar niets moet en je jezelf mag zijn.',
+    'Landen bij jezelf, te beginnen bij je voeten. Voetreflexologie in een warme praktijk in de regio Brugge – een plek waar je mag ontsnappen aan het moeten.',
 };
 
 export default function Home() {
   return (
     <div>
-      {/* Full Width Hero Section with Testimonial */}
-      <Hero 
-        title="Een ruimte waar iedereen welkom is, waar niets moet en je jezelf mag zijn"
+      <Hero
+        title="Even ontsnappen aan het 'moeten'?"
         imageUrl="/images/KImberley_reflexologie_24.jpg"
         showTestimonial={true}
+        showIntro={true}
       />
 
-      {/* CTA Section */}
+      <QuoteBanner
+        quote="Wist je dat je hele lichaam wordt weerspiegeld in je voeten?"
+        className="bg-white"
+      />
+
       <CTA />
     </div>
   );
