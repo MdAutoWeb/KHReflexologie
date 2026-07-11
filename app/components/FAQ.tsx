@@ -1,39 +1,39 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 const faqItems = [
   {
-    question: 'Kietelt voetreflexologie?',
+    question: "Kietelt voetreflexologie?",
     answer:
-      'Dit is een van de meest gestelde vragen! Hoewel voeten gevoelig kunnen zijn, kietelt voetreflexologie niet. Ik gebruik een techniek met specifieke druk en stevige grepen, wat heel anders aanvoelt dan gekriebel. De meeste mensen ervaren het juist als een diepe, rustgevende massage.',
+      "Dit is een van de meest gestelde vragen! Hoewel voeten gevoelig kunnen zijn, kietelt voetreflexologie niet. Ik gebruik een techniek met specifieke druk en stevige grepen, wat heel anders aanvoelt dan gekriebel. De meeste mensen ervaren het juist als een diepe, rustgevende massage.",
   },
   {
-    question: 'Wat moet ik aan of uit doen?',
+    question: "Wat moet ik aan of uit doen?",
     answer:
-      'Je mag gewoon je kleren aanhouden. Alleen je schoenen en sokken gaan uit. Het is handig om een broek te dragen die je gemakkelijk tot net onder je knie kunt optrekken.',
+      "Je mag gewoon je kleren aanhouden. Alleen je schoenen en sokken gaan uit. Het is handig om een broek te dragen die je gemakkelijk tot net onder je knie kunt optrekken.",
   },
   {
-    question: 'Wat kan ik verwachten van een sessie?',
+    question: "Wat kan ik verwachten van een sessie?",
     answer:
       "We beginnen vaak met een kort gesprekje over hoe het met je gaat. Daarna mag je plaatsnemen in de relaxzetel. Terwijl ik je voeten masseer en specifieke punten bewerk, mag jij je ogen sluiten en even helemaal niets doen. Veel mensen voelen na afloop een heerlijke 'lichtheid' of hebben het gevoel op wolkjes te lopen.",
   },
   {
-    question: 'Helpt het echt tegen stress of slaapproblemen?',
+    question: "Helpt het echt tegen stress of slaapproblemen?",
     answer:
       "Absoluut. Voetreflexologie brengt je zenuwstelsel in de 'ruststand', waardoor je cortisol (stresshormoon) daalt en je lichaam weer in balans komt. Dit helpt enorm om het piekeren te stoppen en je nachtrust te verbeteren.",
   },
   {
-    question: 'Zijn er momenten dat een behandeling niet kan?',
+    question: "Zijn er momenten dat een behandeling niet kan?",
     answer:
-      'Bij hoge koorts, besmettelijke voetaandoeningen (zoals voetschimmel) of een trombosebeen is voetreflexologie niet toegestaan. Ben je zwanger? Laat het me dan zeker even weten; tijdens de eerste drie maanden ben ik extra voorzichtig.',
+      "Bij hoge koorts, besmettelijke voetaandoeningen (zoals voetschimmel) of een trombosebeen is voetreflexologie niet toegestaan. Ben je zwanger? Laat het me dan zeker even weten; tijdens de eerste drie maanden ben ik extra voorzichtig.",
   },
   {
-    question: 'Kan ik gemakkelijk parkeren?',
-    answer: 'Ja hoor, dat kan voor de deur of op de middelste oprit.',
+    question: "Kan ik gemakkelijk parkeren?",
+    answer: "Ja hoor, dat kan voor de deur of op de middelste oprit.",
   },
   {
-    question: 'Geef je ook lichaamsmassages?',
+    question: "Geef je ook lichaamsmassages?",
     answer:
-      'Dat kan zeker, te beginnen met een kennismaking tijdens een sessie voetreflexologie.',
+      "Dat kan zeker, te beginnen met een kennismaking tijdens een sessie voetreflexologie.",
   },
 ];
 
@@ -81,6 +81,9 @@ export default function FAQ({ backgroundImageUrl }: FAQProps) {
               </details>
             ))}
           </div>
+          <p className="mt-10 text-center text-[#3F342C]/70 text-sm md:text-base font-light italic">
+            Voordelen: helpt bij stress, slaapproblemen of vermoeidheid
+          </p>
         </div>
       </div>
     </section>

@@ -17,46 +17,45 @@ export default function Aanbod() {
         title=""
         imageUrl="/images/KImberley_reflexologie_11.jpg"
         compact={true}
+        fadeBottom={true}
         showIntro={false}
       />
 
       <QuoteBanner
+        soft
         quote="Voelt je lichaam zwaar of je hoofd vol? Kom zoals je bent, laat je schoenen bij de deur en herontdek je eigen balans."
-        className="bg-white"
       />
 
-      {/* Services Section - White */}
-      <section className="py-20 md:py-32 bg-white">
+      <section className="pt-4 md:pt-6 pb-16 md:pb-28 bg-white">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
+            <p className="text-[#3F342C]/70 text-sm md:text-base font-light text-center mb-10 max-w-2xl mx-auto">
+              Voordelen: helpt bij stress, slaapproblemen of vermoeidheid
+            </p>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
-              {/* Services List */}
               <div className="lg:col-span-1 space-y-8">
                 <div className="border-b border-[#B8A89A]/20 pb-6">
                   <h3 className="text-2xl md:text-3xl font-serif text-[#3F342C] mb-3 font-light">
                     Voetreflexologie
                   </h3>
-                  <p className="text-base text-[#3F342C] font-light mb-1">
-                    60min
-                  </p>
-                  <p className="text-lg text-[#3F342C] font-light">€80</p>
-                  <p className="text-[#3F342C]/70 text-sm font-light leading-relaxed mt-3">
-                    Helpt bij stress, slaapproblemen of vermoeidheid
-                  </p>
+                  <p className="text-lg text-[#3F342C] font-light">€70 / 60 min</p>
                 </div>
 
                 <div className="border-b border-[#B8A89A]/20 pb-6">
                   <h3 className="text-2xl md:text-3xl font-serif text-[#3F342C] mb-3 font-light">
                     Combi voetreflexologie-verzorging
                   </h3>
-                  <p className="text-base text-[#3F342C] font-light mb-1">
-                    +/- 90min
-                  </p>
-                  <p className="text-lg text-[#3F342C] font-light mb-3">€90</p>
+                  <p className="text-lg text-[#3F342C] font-light mb-3">€110 / 90 min</p>
                   <p className="text-[#3F342C]/70 text-sm font-light leading-relaxed">
-                    Inclusief voetbad met mineralen, scrub, masker,
-                    voet-verzorging, nagels knippen en verzorgen
+                    Inclusief voetbad met mineralen, scrub, masker, voet-verzorging, nagels knippen en verzorgen
                   </p>
+                </div>
+
+                <div className="border-b border-[#B8A89A]/20 pb-6">
+                  <h3 className="text-2xl md:text-3xl font-serif text-[#3F342C] mb-3 font-light">
+                    Relaxatiemassage
+                  </h3>
+                  <p className="text-lg text-[#3F342C] font-light">€120 / 90 min · op aanvraag</p>
                 </div>
 
                 <div className="border-b border-[#B8A89A]/20 pb-6">
@@ -64,10 +63,8 @@ export default function Aanbod() {
                     Cadeaubon
                   </h3>
                   <p className="text-[#3F342C]/80 text-sm font-light leading-relaxed">
-                    Ontdekking reflexologie indien je een cadeaubon wenst met de
-                    volgende gegevens: volledige naam en behandeling of bedrag
-                    naar keuze. De cadeaubon kan per post verzonden worden of
-                    afgehaald worden.
+                    Indien je een cadeaubon wenst, bezorg me de volgende gegevens: volledige naam, gewenste behandeling
+                    of bedrag naar keuze. De cadeaubon kan per post verzonden worden of afgehaald worden.
                   </p>
                 </div>
 
@@ -85,7 +82,7 @@ export default function Aanbod() {
               <div className="hidden lg:block lg:col-span-2">
                 <div className="relative w-full h-[700px] rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="/images/KImberley_reflexologie_37.jpg"
+                    src="/images/KImberley_reflexologie_32.jpg"
                     alt="Behandeling"
                     fill
                     className="object-cover"

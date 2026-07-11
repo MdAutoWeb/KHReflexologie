@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Hero from "../components/Hero";
 import CTA from "../components/CTA";
+import SoftFadeSection from "../components/SoftFadeSection";
 
 // Extend Window interface for Calendly
 declare global {
@@ -22,6 +23,16 @@ export default function Contact() {
     type: "success" | "error" | null;
     message: string;
   }>({ type: null, message: "" });
+
+  const [calendlyUrl, setCalendlyUrl] = useState(
+    "https://calendly.com/kimberley-hwong",
+  );
+
+  useEffect(() => {
+    setCalendlyUrl(
+      `https://calendly.com/kimberley-hwong?redirect_url=${encodeURIComponent(`${window.location.origin}/bedankt`)}`,
+    );
+  }, []);
 
   // Load Calendly script
   useEffect(() => {
@@ -72,13 +83,7 @@ export default function Contact() {
       const data = await response.json();
 
       if (response.ok) {
-        setSubmitStatus({
-          type: "success",
-          message:
-            data.message ||
-            "Bericht verzonden! We nemen zo snel mogelijk contact met je op.",
-        });
-        // Reset form
+        setSubmitStatus({ type: "success", message: "" });
         setFormData({ naam: "", email: "", bericht: "" });
       } else {
         setSubmitStatus({
@@ -103,33 +108,31 @@ export default function Contact() {
       {/* Hero Banner */}
       <Hero
         title=""
-        imageUrl="/images/KImberley_reflexologie_55.jpg"
+        imageUrl="/images/KImberley_reflexologie_10.jpg"
         compact={true}
+        fadeBottom={true}
         showIntro={false}
       />
 
-      <section className="py-16 md:py-20 bg-white border-b border-[#E8DED4]">
+      <SoftFadeSection>
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-serif text-[#3F342C] mb-6 font-light">
+            <h2 className="text-3xl md:text-4xl font-serif text-[#3F342C]/90 mb-6 font-light">
               Heb je een vraag of wil je even afstemmen?
             </h2>
-            <p className="text-[#3F342C]/80 text-base md:text-lg leading-relaxed font-light mb-4">
-              Twijfel je of voetreflexologie iets voor jou is, of wil je eerst
-              even kennismaken? Stuur me gerust een berichtje. Ik denk graag met
-              je mee.
+            <p className="text-[#3F342C]/75 text-base md:text-lg leading-relaxed font-light mb-4">
+              Twijfel je of voetreflexologie iets voor jou is, of wil je eerst even kennismaken? Stuur me
+              gerust een berichtje. Ik denk graag met je mee.
             </p>
-            <p className="text-[#3F342C]/70 text-sm md:text-base leading-relaxed font-light">
-              Ik probeer altijd binnen de 24u te reageren. Omdat ik ook nog in
-              de logistiek werk, beantwoord ik berichten vaak in de avonduren of
-              tijdens mijn vrije momenten. Bedankt voor je geduld!
+            <p className="text-[#3F342C]/65 text-sm md:text-base leading-relaxed font-light">
+              Ik probeer altijd binnen de 24u te reageren. Omdat ik ook nog in de logistiek werk, beantwoord ik
+              berichten vaak in de avonduren of tijdens mijn vrije momenten. Bedankt voor je geduld!
             </p>
           </div>
         </div>
-      </section>
+      </SoftFadeSection>
 
-      {/* Contact Details Section - White */}
-      <section className="py-20 md:py-32 bg-white">
+      <section className="pt-4 md:pt-6 pb-20 md:pb-32 bg-white">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 mb-20">
@@ -257,7 +260,7 @@ export default function Contact() {
                   {/* Calendly inline widget */}
                   <div
                     className="calendly-inline-widget"
-                    data-url="https://calendly.com/kimberley-hwong"
+                    data-url={calendlyUrl}
                     style={{
                       minWidth: "320px",
                       height: "600px",
@@ -276,14 +279,26 @@ export default function Contact() {
                   Of stuur een bericht via het formulier.
                 </p>
 
-                {submitStatus.type && (
-                  <div
-                    className={`mb-6 p-4 rounded-xl ${
-                      submitStatus.type === "success"
-                        ? "bg-green-50 text-green-800 border border-green-200"
-                        : "bg-red-50 text-red-800 border border-red-200"
-                    }`}
-                  >
+                {submitStatus.type === "success" && (
+                  <div className="mb-6 p-6 md:p-8 rounded-xl bg-[#F5EFE8] border border-[#E8DED4] text-left space-y-4">
+                    <h3 className="text-xl md:text-2xl font-serif text-[#3F342C] font-light">
+                      Wat fijn dat je voor jezelf kiest!
+                    </h3>
+                    <div className="space-y-3 text-[#3F342C]/80 text-sm md:text-base leading-relaxed font-light">
+                      <p>
+                        Bedankt voor je bericht. Ik kijk ernaar uit om je te mogen helpen en denk graag met je mee.
+                      </p>
+                      <p>Ik probeer altijd binnen de 24u te reageren. Heb je nog vragen? Stel ze gerust.</p>
+                      <p className="text-[#3F342C]">Warme groet, Kimberley</p>
+                    </div>
+                    <p className="text-[#3F342C]/65 italic text-sm font-light pt-2">
+                      Landen bij jezelf, te beginnen bij je voeten.
+                    </p>
+                  </div>
+                )}
+
+                {submitStatus.type === "error" && (
+                  <div className="mb-6 p-4 rounded-xl bg-red-50 text-red-800 border border-red-200">
                     <p className="font-light">{submitStatus.message}</p>
                   </div>
                 )}

@@ -17,31 +17,24 @@ export default function WieBenIk() {
         imageUrl="/images/KImberley_reflexologie_55.jpg"
         showIntro={true}
         showIntroCta={false}
+        fadeBottom={true}
       />
 
-      {/* Reflexologie + Opleidingen Section - White */}
-      <section className="py-20 md:py-32 bg-white">
+      <div
+        className="h-20 md:h-28 bg-gradient-to-b from-[#F5EFE8] to-white"
+        aria-hidden="true"
+      />
+
+      <section className="pt-4 md:pt-6 pb-20 md:pb-32 bg-white">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto space-y-20">
-            {/* Rij 1: Opleidingen links, foto rechts */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-              {/* Opleidingen links */}
+            {/* Opleidingen */}
+            <div>
               <div>
                 <h2 className="text-3xl md:text-4xl font-serif text-[#3F342C] mb-6 font-light">
                   Opleidingen
                 </h2>
                 <div className="space-y-4">
-                  <div className="flex justify-between gap-4 text-sm md:text-base border-b border-[#B8A89A]/20 pb-3">
-                    <div className="text-[#B8A89A] font-light w-28">
-                      September 2021
-                    </div>
-                    <div className="flex-1 text-[#3F342C] font-light">
-                      <p>Health Care voorbereidingsprogramma</p>
-                      <p className="text-[#3F342C]/70 text-xs md:text-sm">
-                        Howest-ICZO
-                      </p>
-                    </div>
-                  </div>
                   <div className="flex justify-between gap-4 text-sm md:text-base border-b border-[#B8A89A]/20 pb-3">
                     <div className="text-[#B8A89A] font-light w-28">
                       2019-2020
@@ -93,19 +86,6 @@ export default function WieBenIk() {
                       </p>
                     </div>
                   </div>
-                </div>
-              </div>
-
-              {/* Foto rechts */}
-              <div className="hidden lg:block">
-                <div className="relative w-full h-[320px] rounded-xl overflow-hidden shadow-lg">
-                  <Image
-                    src="/images/KImberley_reflexologie_32.jpg"
-                    alt="Kimberley aan het werk"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 600px"
-                  />
                 </div>
               </div>
             </div>
