@@ -81,9 +81,6 @@ export default function FAQ({ backgroundImageUrl }: FAQProps) {
               </details>
             ))}
           </div>
-          <p className="mt-10 text-center text-[#3F342C]/70 text-sm md:text-base font-light italic">
-            Voordelen: helpt bij stress, slaapproblemen of vermoeidheid
-          </p>
         </div>
       </div>
     </section>

@@ -29,9 +29,6 @@ export default function Aanbod() {
       <section className="pt-4 md:pt-6 pb-16 md:pb-28 bg-white">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
-            <p className="text-[#3F342C]/70 text-sm md:text-base font-light text-center mb-10 max-w-2xl mx-auto">
-              Voordelen: helpt bij stress, slaapproblemen of vermoeidheid
-            </p>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
               <div className="lg:col-span-1 space-y-8">
                 <div className="border-b border-[#B8A89A]/20 pb-6">
@@ -78,7 +75,6 @@ export default function Aanbod() {
                 </div>
               </div>
 
-              {/* Side Image */}
               <div className="hidden lg:block lg:col-span-2">
                 <div className="relative w-full h-[700px] rounded-xl overflow-hidden shadow-lg">
                   <Image

@@ -136,10 +136,9 @@ export default function Hero({
                     </p>
                   )}
                   <p className="text-sm md:text-base text-white leading-relaxed font-light">
-                    In een wereld die nooit stilstaat, bied ik je een plek waar
-                    de tijd dat wel doet. Ik ben Kimberley, een warme,
-                    goedlachse en tikkeltje introverte vrouw die je met open
-                    armen ontvangt in mijn praktijk voor voetreflexologie.
+                    Ik ben Kimberley, een warme, goedlachse en tikkeltje
+                    introverte vrouw die je met open armen ontvangt in mijn
+                    praktijk voor voetreflexologie.
                   </p>
                   <p className="text-sm md:text-base text-white leading-relaxed font-light mt-4">
                     Ik werk hiernaast ook als administratief bediende in de
@@ -212,7 +211,15 @@ export default function Hero({
               <div className="max-w-4xl mx-auto bg-black/50 backdrop-blur-sm rounded-lg p-6 md:p-8">
                 <div className="flex flex-col md:flex-row gap-6 items-start">
                   <div className="flex-shrink-0">
-                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-lg bg-[#B8A89A] overflow-hidden" />
+                    <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-lg overflow-hidden">
+                      <Image
+                        src="/images/testimonial-sophia.jpg"
+                        alt="Kimberley tijdens een behandeling"
+                        fill
+                        className="object-cover"
+                        sizes="128px"
+                      />
+                    </div>
                   </div>
                   <div className="flex-1 text-white">
                     <div className="text-4xl md:text-5xl text-white/80 mb-2 leading-none font-serif">

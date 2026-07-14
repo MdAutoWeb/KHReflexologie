@@ -1,15 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 
-const resendApiKey = process.env.RESEND_API_KEY;
-const resend = resendApiKey ? new Resend(resendApiKey) : null;
+const CONTACT_TO = process.env.CONTACT_TO_EMAIL ?? "kimberley.hwong@outlook.be";
+const SMTP_HOST = process.env.SMTP_HOST ?? "smtp-mail.outlook.com";
+const SMTP_PORT = Number(process.env.SMTP_PORT ?? 587);
+const SMTP_USER = process.env.SMTP_USER ?? CONTACT_TO;
+const SMTP_PASS = process.env.SMTP_PASS;
+
+function isValidEmail(email: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { naam, email, bericht } = body;
 
-    // Validate required fields
     if (!naam || !email || !bericht) {
       return NextResponse.json(
         { error: "Alle velden zijn verplicht" },
@@ -17,21 +23,26 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Check API key
-    if (!resend) {
-      console.error("RESEND_API_KEY is niet ingesteld in .env.local");
+    if (!isValidEmail(email)) {
       return NextResponse.json(
-        {
-          error:
-            "Emailservice is niet geconfigureerd. Contacteer de beheerder (RESEND_API_KEY ontbreekt).",
-        },
-        { status: 500 },
+        { error: "Gelieve een geldig e-mailadres in te vullen" },
+        { status: 400 },
       );
     }
 
-    // Create email content
+    if (!SMTP_PASS) {
+      console.error("SMTP_PASS is niet ingesteld");
+      return NextResponse.json(
+        {
+          error:
+            "Het contactformulier is nog niet geactiveerd. Mail ons rechtstreeks via kimberley.hwong@outlook.be of bel +32 (0) 476 51 42 48.",
+        },
+        { status: 503 },
+      );
+    }
+
     const subject = `Nieuw contactformulier bericht van ${naam}`;
-    const emailBody = `
+    const text = `
 Nieuw bericht ontvangen via het contactformulier:
 
 Naam: ${naam}
@@ -44,51 +55,39 @@ ${bericht}
 Dit bericht is verzonden via het contactformulier op de website.
     `.trim();
 
-    // Probeer echt te mailen met Resend
-    try {
-      const { data, error } = await resend.emails.send({
-        from: "Contact Form <onboarding@resend.dev>",
-        to: "kimberley.hwong@outlook.be",
-        subject,
-        text: emailBody,
-        replyTo: email,
-      });
+    const transporter = nodemailer.createTransport({
+      host: SMTP_HOST,
+      port: SMTP_PORT,
+      secure: false,
+      auth: {
+        user: SMTP_USER,
+        pass: SMTP_PASS,
+      },
+    });
 
-      if (error) {
-        console.error("Resend error:", error);
-        return NextResponse.json(
-          {
-            error:
-              "Fout bij versturen van email via Resend. Controleer je Resend-configuratie.",
-          },
-          { status: 500 },
-        );
-      } else {
-        console.log("Resend email sent, id:", data?.id);
-      }
-      return NextResponse.json(
-        {
-          success: true,
-          message:
-            "Bericht verzonden! We nemen zo snel mogelijk contact met je op.",
-          emailId: data?.id,
-        },
-        { status: 200 },
-      );
-    } catch (emailError) {
-      console.error("Email sending error:", emailError);
-      return NextResponse.json(
-        {
-          error:
-            "Er is een fout opgetreden bij het verzenden van de email. Probeer het later opnieuw.",
-        },
-        { status: 500 },
-      );
-    }
+    await transporter.sendMail({
+      from: `"KH Reflexologie website" <${SMTP_USER}>`,
+      to: CONTACT_TO,
+      replyTo: email,
+      subject,
+      text,
+    });
+
+    return NextResponse.json(
+      {
+        success: true,
+        message:
+          "Bericht verzonden! We nemen zo snel mogelijk contact met je op.",
+      },
+      { status: 200 },
+    );
   } catch (error) {
     console.error("Error processing contact form:", error);
     return NextResponse.json(
-      { error: "Er is een fout opgetreden. Probeer het later opnieuw." },
+      {
+        error:
+          "Er is een fout opgetreden bij het verzenden. Probeer het later opnieuw of mail rechtstreeks naar kimberley.hwong@outlook.be.",
+      },
       { status: 500 },
     );
   }

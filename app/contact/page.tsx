@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import Hero from "../components/Hero";
 import CTA from "../components/CTA";
 import SoftFadeSection from "../components/SoftFadeSection";
+import LocationAddress from "../components/LocationAddress";
+import LocationMap from "../components/LocationMap";
 
 // Extend Window interface for Calendly
 declare global {
@@ -165,7 +167,7 @@ export default function Contact() {
                     <div className="font-light">
                       <p className="font-light text-base mb-1">Locatie</p>
                       <p className="text-[#3F342C]/80">
-                        Beverhoutsveldstraat 55C, 8730 Oedelem
+                        <LocationAddress />
                       </p>
                       <p className="text-[#3F342C]/70 text-sm mt-1">
                         waar de thee altijd klaarstaat
@@ -231,16 +233,7 @@ export default function Contact() {
                   Locatie
                 </h2>
                 <div className="w-full h-72 bg-[#E8DED4] rounded-xl overflow-hidden shadow-sm">
-                  <iframe
-                    src="https://www.google.com/maps?q=Beverhoutsveldstraat+55C,+8730+Oedelem,+Belgium&output=embed"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="w-full h-full"
-                  />
+                  <LocationMap />
                 </div>
               </div>
             </div>

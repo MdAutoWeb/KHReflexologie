@@ -5,7 +5,7 @@ import Image from "next/image";
 export const metadata = {
   title: "Wie ben ik | Kimberley - Reflexologie & More",
   description:
-    "Leer meer over Kimberley en haar opleidingen in voetreflexologie en massage.",
+    "Leer Kimberley kennen: haar verhaal, passie voor voetreflexologie en opleidingen. Een warme praktijk in de regio Brugge.",
 };
 
 export default function WieBenIk() {
@@ -30,11 +30,10 @@ export default function WieBenIk() {
           <div className="max-w-6xl mx-auto space-y-20">
             {/* Opleidingen */}
             <div>
-              <div>
-                <h2 className="text-3xl md:text-4xl font-serif text-[#3F342C] mb-6 font-light">
-                  Opleidingen
-                </h2>
-                <div className="space-y-4">
+              <h2 className="text-3xl md:text-4xl font-serif text-[#3F342C] mb-6 font-light">
+                Opleidingen
+              </h2>
+              <div className="space-y-4 max-w-2xl">
                   <div className="flex justify-between gap-4 text-sm md:text-base border-b border-[#B8A89A]/20 pb-3">
                     <div className="text-[#B8A89A] font-light w-28">
                       2019-2020
@@ -87,7 +86,6 @@ export default function WieBenIk() {
                     </div>
                   </div>
                 </div>
-              </div>
             </div>
 
             {/* Rij 2: Foto links, tekst 'Wat is reflexologie' rechts */}

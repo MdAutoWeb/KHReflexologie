@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import LocationAddress from "./LocationAddress";
 
 export default function Footer() {
   return (
@@ -83,14 +84,10 @@ export default function Footer() {
             <h4 className="font-light text-base mb-4 text-[#3F342C] tracking-wide">
               Adres
             </h4>
-            <div className="space-y-1">
-              <p className="text-[#3F342C]/80 text-sm font-light">
-                Beverhoutsveldstraat 55C
-              </p>
-              <p className="text-[#3F342C]/80 text-sm font-light">
-                8730 Oedelem
-              </p>
-            </div>
+            <LocationAddress variant="footer" />
+            <p className="mt-2 text-[#3F342C]/50 text-xs font-light">
+              BE0782.960.046
+            </p>
           </div>
         </div>
         <div className="border-t border-[#E8DED4] pt-6 text-center text-xs text-[#3F342C]/50 font-light">

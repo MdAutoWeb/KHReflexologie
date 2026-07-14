@@ -1,6 +1,7 @@
 import Hero from "./components/Hero";
 import CTA from "./components/CTA";
 import QuoteBanner from "./components/QuoteBanner";
+import LocalBusinessSchema from "./components/LocalBusinessSchema";
 
 export const metadata = {
   title: "Voetreflexologie & voetmassage in en rond Brugge | KH Reflexologie",
@@ -10,7 +11,9 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <div>
+    <>
+      <LocalBusinessSchema />
+      <div>
       <Hero
         title="Even ontsnappen aan het 'moeten'?"
         imageUrl="/images/KImberley_reflexologie_24.jpg"
@@ -27,6 +30,7 @@ export default function Home() {
       />
 
       <CTA />
-    </div>
+      </div>
+    </>
   );
 }

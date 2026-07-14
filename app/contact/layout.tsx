@@ -1,4 +1,5 @@
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
+import LocalBusinessSchema from "../components/LocalBusinessSchema";
 
 export const metadata: Metadata = {
   title: 'Contact | KH Reflexologie – voetmassage en reflexologie in Brugge',
@@ -11,5 +12,10 @@ export default function ContactLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      <LocalBusinessSchema path="/contact" />
+      {children}
+    </>
+  );
 }
