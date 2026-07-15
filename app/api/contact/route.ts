@@ -1,20 +1,49 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE,
+  SMTP_PASS,
+  SMTP_USER,
+} from "@/lib/contact";
+import { validateContactSubmission, type ContactSubmission } from "@/lib/contactSpam";
 
-const CONTACT_TO = process.env.CONTACT_TO_EMAIL ?? "kimberley.hwong@outlook.be";
-const SMTP_HOST = process.env.SMTP_HOST ?? "smtp-mail.outlook.com";
-const SMTP_PORT = Number(process.env.SMTP_PORT ?? 587);
-const SMTP_USER = process.env.SMTP_USER ?? CONTACT_TO;
-const SMTP_PASS = process.env.SMTP_PASS;
+export const runtime = "nodejs";
 
 function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+function createGmailTransport() {
+  return nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: SMTP_USER,
+      pass: SMTP_PASS,
+    },
+  });
+}
+
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
+    const body = (await request.json()) as ContactSubmission;
     const { naam, email, bericht } = body;
+
+    const spamCheck = validateContactSubmission(body, request);
+    if (!spamCheck.ok) {
+      if (spamCheck.silent) {
+        return NextResponse.json(
+          {
+            success: true,
+            message:
+              "Bericht verzonden! We nemen zo snel mogelijk contact met je op.",
+          },
+          { status: 200 },
+        );
+      }
+
+      return NextResponse.json({ error: spamCheck.message }, { status: 429 });
+    }
 
     if (!naam || !email || !bericht) {
       return NextResponse.json(
@@ -30,12 +59,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (!SMTP_PASS) {
-      console.error("SMTP_PASS is niet ingesteld");
+    if (!SMTP_PASS || !SMTP_USER) {
+      console.error("SMTP_USER of SMTP_PASS is niet ingesteld");
       return NextResponse.json(
         {
-          error:
-            "Het contactformulier is nog niet geactiveerd. Mail ons rechtstreeks via kimberley.hwong@outlook.be of bel +32 (0) 476 51 42 48.",
+          error: `Het contactformulier is nog niet geactiveerd. Mail ons rechtstreeks via ${CONTACT_EMAIL} of bel ${CONTACT_PHONE}.`,
         },
         { status: 503 },
       );
@@ -55,19 +83,10 @@ ${bericht}
 Dit bericht is verzonden via het contactformulier op de website.
     `.trim();
 
-    const transporter = nodemailer.createTransport({
-      host: SMTP_HOST,
-      port: SMTP_PORT,
-      secure: false,
-      auth: {
-        user: SMTP_USER,
-        pass: SMTP_PASS,
-      },
-    });
-
+    const transporter = createGmailTransport();
     await transporter.sendMail({
       from: `"KH Reflexologie website" <${SMTP_USER}>`,
-      to: CONTACT_TO,
+      to: CONTACT_EMAIL,
       replyTo: email,
       subject,
       text,
@@ -82,11 +101,12 @@ Dit bericht is verzonden via het contactformulier op de website.
       { status: 200 },
     );
   } catch (error) {
-    console.error("Error processing contact form:", error);
+    const message = error instanceof Error ? error.message : String(error);
+    console.error("Contact form SMTP error:", message);
+
     return NextResponse.json(
       {
-        error:
-          "Er is een fout opgetreden bij het verzenden. Probeer het later opnieuw of mail rechtstreeks naar kimberley.hwong@outlook.be.",
+        error: `Er is een fout opgetreden bij het verzenden. Probeer het later opnieuw of mail rechtstreeks naar ${CONTACT_EMAIL}.`,
       },
       { status: 500 },
     );

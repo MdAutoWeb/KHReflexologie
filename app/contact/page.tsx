@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Hero from "../components/Hero";
 import CTA from "../components/CTA";
 import SoftFadeSection from "../components/SoftFadeSection";
 import LocationAddress from "../components/LocationAddress";
 import LocationMap from "../components/LocationMap";
+import { CONTACT_EMAIL } from "@/lib/contact";
 
 // Extend Window interface for Calendly
 declare global {
@@ -19,7 +20,9 @@ export default function Contact() {
     naam: "",
     email: "",
     bericht: "",
+    website: "",
   });
+  const formLoadedAt = useRef(Date.now());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
     type: "success" | "error" | null;
@@ -79,14 +82,20 @@ export default function Contact() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          naam: formData.naam,
+          email: formData.email,
+          bericht: formData.bericht,
+          website: formData.website,
+          _ts: formLoadedAt.current,
+        }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
         setSubmitStatus({ type: "success", message: "" });
-        setFormData({ naam: "", email: "", bericht: "" });
+        setFormData({ naam: "", email: "", bericht: "", website: "" });
       } else {
         setSubmitStatus({
           type: "error",
@@ -217,10 +226,10 @@ export default function Contact() {
                     <div className="font-light">
                       <p className="font-light text-base mb-1">Email</p>
                       <a
-                        href="mailto:kimberley.hwong@outlook.be"
+                        href={`mailto:${CONTACT_EMAIL}`}
                         className="text-[#3F342C]/80 hover:text-[#B8A89A] transition-colors duration-300"
                       >
-                        kimberley.hwong@outlook.be
+                        {CONTACT_EMAIL}
                       </a>
                     </div>
                   </div>
@@ -297,6 +306,23 @@ export default function Contact() {
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  <div
+                    className="absolute left-[-9999px] h-0 w-0 overflow-hidden"
+                    aria-hidden="true"
+                  >
+                    <label htmlFor="website">Website</label>
+                    <input
+                      type="text"
+                      id="website"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={formData.website}
+                      onChange={(e) =>
+                        setFormData({ ...formData, website: e.target.value })
+                      }
+                    />
+                  </div>
                   <div>
                     <label
                       htmlFor="naam"

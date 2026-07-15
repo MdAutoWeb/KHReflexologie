@@ -1,4 +1,5 @@
 import { getCurrentLocation } from "./location";
+import { CONTACT_EMAIL } from "./contact";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://kimberleyhwong.com";
@@ -6,7 +7,7 @@ const SITE_URL =
 const BUSINESS = {
   name: "KH Reflexologie",
   telephone: "+32476514248",
-  email: "kimberley.hwong@outlook.be",
+  email: CONTACT_EMAIL,
   taxID: "BE0782.960.046",
   priceRange: "€€",
   areaServed: [
